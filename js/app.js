@@ -16,8 +16,6 @@ Horn.prototype.render = function() {
   const $hornClone = $('section[class="clone"]');
   const $hornHtml = $('#photo-template').html();
   $hornClone.html($hornHtml);
-  console.log('$hornClone', $hornClone);
-
 
   $hornClone.find('h2').text(this.title);
   $hornClone.find('img').attr('src', this.image_url);
@@ -44,7 +42,7 @@ Horn.loadHorns = () => {
 
 $(() => Horn.readJson());
 
-//Filter set up
+//Filter set up - called as a .then up above
 
 let hornedAnimals = [];
 
@@ -66,3 +64,12 @@ let createDropdown = function() {
   }
 };
 
+// Filter event
+
+$('select').change(function(){
+
+  let optionSelected = $('#dropDown').find(':selected').text();
+
+  $('section').hide();
+  $('section.' + optionSelected).show();
+})
