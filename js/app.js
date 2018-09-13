@@ -33,6 +33,7 @@ Horn.readJson = () => {
     })
     .then(Horn.loadHorns)
     .then(Horn.createFilter)
+    .then(Horn.loadFilters)
 }
 
 Horn.loadHorns = () => {
@@ -65,7 +66,3 @@ let createDropdown = function() {
 Horn.loadFilters = () => {
   hornedAnimals.forEach(horn => createDropdown(horn));
 }
-
-Horn.loadFilters();
-
-
