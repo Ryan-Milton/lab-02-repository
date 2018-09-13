@@ -35,7 +35,7 @@ Horn.readJson = () => {
     })
     .then(Horn.loadHorns)
     .then(Horn.createFilter)
-    .then(Horn.loadFilters)
+    .then(createDropdown)
 }
 
 Horn.loadHorns = () => {
@@ -54,20 +54,15 @@ Horn.createFilter = () => {
       hornedAnimals.push(horn.keyword);
     }
   })
-  console.log(hornedAnimals)
 }
 
 let createDropdown = function() {
-  // let hornOption = hornedAnimals[index];
-  $('select').append('<option class="clone"></option>');
-  const $hornFilter = $('option[class="clone"]');
-  const $hornFilterHtml = $('#dropDown').html();
-  $hornFilter.html($hornFilterHtml);
 
-  $hornFilter.find('option').text('this is a test');
-  $hornFilter.removeClass('clone');
-}
+  for (let i = 0; i < hornedAnimals.length; i++){
+    let dropdownOption = document.createElement('option');
+    let dropdownContainer = document.getElementById('dropDown');
+    dropdownOption.textContent = hornedAnimals[i];
+    dropdownContainer.appendChild(dropdownOption);
+  }
+};
 
-Horn.loadFilters = () => {
-  hornedAnimals.forEach((horn, index) => createDropdown(horn));
-}
