@@ -16,6 +16,8 @@ Horn.prototype.render = function() {
   const $hornClone = $('section[class="clone"]');
   const $hornHtml = $('#photo-template').html();
   $hornClone.html($hornHtml);
+  console.log('$hornClone', $hornClone);
+
 
   $hornClone.find('h2').text(this.title);
   $hornClone.find('img').attr('src', this.image_url);
@@ -56,13 +58,16 @@ Horn.createFilter = () => {
 }
 
 let createDropdown = function() {
+  // let hornOption = hornedAnimals[index];
   $('select').append('<option class="clone"></option>');
   const $hornFilter = $('option[class="clone"]');
+  const $hornFilterHtml = $('#dropDown').html();
+  $hornFilter.html($hornFilterHtml);
 
-  $hornFilter.find('option').text(hornedAnimals.toString());
+  $hornFilter.find('option').text('this is a test');
   $hornFilter.removeClass('clone');
 }
 
 Horn.loadFilters = () => {
-  hornedAnimals.forEach(horn => createDropdown(horn));
+  hornedAnimals.forEach((horn, index) => createDropdown(horn));
 }
